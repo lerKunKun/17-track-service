@@ -23,7 +23,12 @@
      - `17TRACK_WEBHOOK_SECRET`：用于 webhook 签名校验（可选）。
      - 数据库/Redis 用户名密码等。
 
-3. **构建与启动**
+3. **配置 Maven 仓库（可选）**
+   - 仓库根目录已提供 `.mvn/settings.xml`，默认将 `central` 指向可定制镜像地址。
+   - 如需切换到公司内网或自建仓库，只需修改该文件中的 `<url>`，或在本地覆盖 `~/.m2/settings.xml`。
+   - 所有 Maven 命令都会自动引用 `.mvn/maven.config` 中配置的 `-s` 参数，无需额外手动传入。
+
+4. **构建与启动**
    ```bash
    mvn spring-boot:run
    ```
@@ -57,5 +62,7 @@ src/
 ```bash
 mvn test
 ```
+
+> **注意**：若运行 `mvn` 时出现因网络策略导致的仓库访问失败，可在 `.mvn/settings.xml` 中替换为可用的镜像；如需进一步诊断，可添加额外的 `<mirror>`、`<proxy>` 节点来满足所在环境的访问要求。
 
 > 提示：若需与官方最新规范对齐，请根据 17TRACK 官方文档更新 `SeventeenTrackClient` 的路径、Header 和签名规则，本项目保留了易于替换的结构。
