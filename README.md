@@ -17,23 +17,27 @@
    - Maven 3.9+
    - MySQL、Redis 实例
 
-2. **配置凭证**
+2. **初始化数据库**
+   - 执行 `docs/schema.sql` 中提供的建库建表脚本，或将内容复制到 DB 管理平台运行。
+   - 如需自定义库名/字符集，可在脚本顶部直接修改。
+
+3. **配置凭证**
    - 复制 `src/main/resources/application.yml`，或在部署环境中设置以下变量：
      - `TRACK17_API_KEY`、`TRACK17_API_SECRET`：来自 17TRACK 官方最新控制台。
      - `17TRACK_WEBHOOK_SECRET`：用于 webhook 签名校验（可选）。
      - 数据库/Redis 用户名密码等。
 
-3. **配置 Maven 仓库（可选）**
+4. **配置 Maven 仓库（可选）**
    - 仓库根目录已提供 `.mvn/settings.xml`，默认将 `central` 指向可定制镜像地址。
    - 如需切换到公司内网或自建仓库，只需修改该文件中的 `<url>`，或在本地覆盖 `~/.m2/settings.xml`。
    - 所有 Maven 命令都会自动引用 `.mvn/maven.config` 中配置的 `-s` 参数，无需额外手动传入。
 
-4. **构建与启动**
+5. **构建与启动**
    ```bash
    mvn spring-boot:run
    ```
 
-4. **典型调用**
+6. **典型调用**
    - 查询缓存：`GET /api/v1/tracks/{trackingNumber}`
    - 即时刷新：`POST /api/v1/tracks/query`，body 示例：
      ```json
