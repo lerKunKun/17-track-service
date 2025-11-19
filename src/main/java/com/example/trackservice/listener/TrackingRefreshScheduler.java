@@ -24,8 +24,7 @@ public class TrackingRefreshScheduler {
 
     @Scheduled(fixedDelayString = "${integration.refresh-interval-ms:60000}")
     public void refreshActiveShipments() {
-        repository.findAll().stream()
-                .filter(record -> record.getLastSyncedAt() == null || record.getLastSyncedAt().isBefore(record.getLastEventTime()))
+        repository.findRecordsNeedingRefresh()
                 .forEach(this::refreshRecord);
     }
 

@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS tracking_records (
     updated_at DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
     PRIMARY KEY (id),
     INDEX idx_tracking_records_last_synced (last_synced_at),
+    INDEX idx_tracking_records_last_event (last_event_time),
+    INDEX idx_tracking_records_refresh_state (last_synced_at, last_event_time),
     INDEX idx_tracking_records_carrier (carrier_code)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
