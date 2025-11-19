@@ -20,7 +20,7 @@ spring:
     type: redis
 
 integration:
-  17track:
+  seventeen-track:
     base-url: https://api.17track.net/track
     api-key: <17TRACK_API_KEY>
     api-secret: <17TRACK_API_SECRET>

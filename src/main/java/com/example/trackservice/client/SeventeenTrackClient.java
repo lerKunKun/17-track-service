@@ -25,8 +25,8 @@ public class SeventeenTrackClient {
     private final String apiSecret;
 
     public SeventeenTrackClient(WebClient trackingWebClient,
-                                @Value("${integration.17track.api-key}") String apiKey,
-                                @Value("${integration.17track.api-secret}") String apiSecret) {
+                                @Value("${integration.seventeen-track.api-key}") String apiKey,
+                                @Value("${integration.seventeen-track.api-secret}") String apiSecret) {
         this.webClient = trackingWebClient;
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;

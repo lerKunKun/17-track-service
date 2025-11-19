@@ -11,7 +11,7 @@ import reactor.netty.http.client.HttpClient;
 @Configuration
 public class WebClientConfig {
 
-    @Value("${integration.17track.base-url:https://api.17track.net/track}")
+    @Value("${integration.seventeen-track.base-url:https://api.17track.net/track}")
     private String baseUrl;
 
     @Bean
